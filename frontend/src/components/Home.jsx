@@ -1,16 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import RestImage from '../images/rest_background.jpg';
 
-const HomePage = styled.div`
-	height: 100vh;
-	background-image: url(${RestImage});
-`;
+const HomePage = styled.div``;
 const H1 = styled.h1`
 	padding: 25vh 0 0 5vw;
 	margin: 0;
 	color: white;
-	font-size: 100px;
+	font-size: calc(60px + (100 - 60) * ((100vw - 300px) / (1600 - 300)));
 `;
 
 export default function Home() {

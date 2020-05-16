@@ -1,28 +1,22 @@
 import React from 'react';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-	Link,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './Header';
 import Menu from '../Menu';
 import Home from '../Home';
+import Contact from '../Contact';
 export default function CustomRouter() {
 	return (
 		<Router>
 			<Header />
-			{/* <Redirect exact from="/" to="home" /> */}
 			<Switch>
-				<Route path="/home">
+				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route path="/menu">
+				<Route exact path="/menu">
 					<Menu />
 				</Route>
-				<Route path="/contact">
-					<div>contact</div>
+				<Route exact path="/contact">
+					<Contact />
 				</Route>
 			</Switch>
 		</Router>

@@ -1,16 +1,20 @@
 import React from 'react';
-// import Link from '@material-ui/core/Link';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import RestImage from '../../images/rest_background.jpg';
 
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-	Redirect,
-	Link,
-} from 'react-router-dom';
+const Background = styled.div`
+	position: fixed;
+	width: 100%;
+
+	height: 100vh;
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+		url(${RestImage});
+	z-index: -1;
+`;
+
 const LinkText = styled.div`
 	color: white;
 	padding: 0 20px 0 0;
@@ -31,30 +35,33 @@ const Li = styled.li`
 `;
 const Ul = styled.ul`
 	margin: 0;
+	padding: 0;
 `;
 export default function Header() {
-	const preventDefault = (event) => event.preventDefault();
 	return (
-		<AppBar position="static">
-			<Toolbar variant="dense">
-				<Ul>
-					<Li>
-						<Link to="/home" style={{ textDecoration: 'none' }}>
-							<LinkText>Home</LinkText>
-						</Link>
-					</Li>
-					<Li>
-						<Link to="/menu" style={{ textDecoration: 'none' }}>
-							<LinkText>Menu</LinkText>
-						</Link>
-					</Li>
-					<Li>
-						<Link to="/contact" style={{ textDecoration: 'none' }}>
-							<LinkText>Contact</LinkText>
-						</Link>
-					</Li>
-				</Ul>
-			</Toolbar>
-		</AppBar>
+		<div>
+			<Background />
+			<AppBar position="static">
+				<Toolbar variant="dense">
+					<Ul>
+						<Li>
+							<Link to="/" style={{ textDecoration: 'none' }}>
+								<LinkText>Home</LinkText>
+							</Link>
+						</Li>
+						<Li>
+							<Link to="/menu" style={{ textDecoration: 'none' }}>
+								<LinkText>Menu</LinkText>
+							</Link>
+						</Li>
+						<Li>
+							<Link to="/contact" style={{ textDecoration: 'none' }}>
+								<LinkText>Contact</LinkText>
+							</Link>
+						</Li>
+					</Ul>
+				</Toolbar>
+			</AppBar>
+		</div>
 	);
 }
