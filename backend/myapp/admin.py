@@ -1,8 +1,11 @@
 from django.contrib import admin
-from .models import (Article)
+from .models import (MenuCategory, MenuItem)
 
-# Register your models here.
-class ArticleAdmin(admin.ModelAdmin):
+class MenuCategoryAdmin(admin.ModelAdmin):
     field = '__all__'
 
-admin.site.register(Article, ArticleAdmin)
+class MenuItemAdmin(admin.ModelAdmin):
+    field = '__all__'
+
+admin.site.register(MenuCategory, MenuCategoryAdmin)
+admin.site.register(MenuItem, MenuItemAdmin)

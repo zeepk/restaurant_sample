@@ -1,11 +1,18 @@
-from myapp.models import (Article)
+from myapp.models import (MenuItem, MenuCategory)
 from rest_framework import viewsets, permissions
-from .serializers import (ArticleSerializer)
+from .serializers import (MenuCategorySerializer, MenuItemSerializer)
 
 
-class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()
+class MenuCategoryViewSet(viewsets.ModelViewSet):
+    queryset = MenuCategory.objects.all()
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = ArticleSerializer
+    serializer_class = MenuCategorySerializer
+
+class MenuItemViewSet(viewsets.ModelViewSet):
+    queryset = MenuItem.objects.all()
+    permission_classes = [
+        permissions.AllowAny
+    ]
+    serializer_class = MenuItemSerializer
