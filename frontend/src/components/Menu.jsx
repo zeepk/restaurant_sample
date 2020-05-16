@@ -1,36 +1,77 @@
 import React, { Component } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import TabPanel from '@material-ui/core/Tab';
 
 class Menu extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: [],
+			categories: [],
+			items: [],
 		};
+		this.fetchServices = this.fetchServices.bind(this);
 	}
 
-	render() {
-		let article_info = [
-			{
-				title: 'placeholder',
-			},
-		];
+	componentWillMount() {
+		this.fetchServices();
+	}
+
+	fetchServices() {
 		fetch('http://localhost:8000/api/menu-items.json')
 			.then((response) => {
 				return response.json();
 			})
 			.then((myJson) => {
-				article_info = myJson;
-				console.table(article_info);
 				// this.setState({
 				// 	data: myJson,
 				// });
 			});
+		fetch('http://localhost:8000/api/menu-categories.json')
+			.then((response) => {
+				return response.json();
+			})
+			.then((myJson) => {
+				console.table(myJson);
+				this.setState({
+					categories: myJson,
+				});
+			});
+	}
+
+	render() {
+		let categories = [
+			{
+				title: 'placeholder',
+			},
+			{
+				title: 'placeholder',
+			},
+		];
+		let items = [
+			{
+				title: 'placeholder',
+				category: 'placeholder',
+			},
+		];
+
+		const category_tabs = this.state.categories.map((category) => (
+			<Tab label={category.title} />
+		));
+		const menu_panels = items.map((item) => (
+			<TabPanel index={0}>{item.title}</TabPanel>
+		));
 
 		return (
 			<div>
-				{/* <h3>{this.state.data[0].title}</h3>
-				<p>{this.state.data[0].created_at}</p>
-				<p>{this.state.data[0].message}</p> */}
+				<AppBar
+					position="static"
+					style={{ backgroundColor: 'gold', color: 'black' }}
+				>
+					<Tabs aria-label="simple tabs example">{category_tabs}</Tabs>
+				</AppBar>
+				{menu_panels}
 			</div>
 		);
 	}

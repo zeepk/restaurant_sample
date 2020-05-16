@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import Header from './Header';
 import Menu from '../Menu';
+import Home from '../Home';
 export default function CustomRouter() {
 	return (
 		<Router>
@@ -15,7 +16,7 @@ export default function CustomRouter() {
 			{/* <Redirect exact from="/" to="home" /> */}
 			<Switch>
 				<Route path="/home">
-					<div>home</div>
+					<Home />
 				</Route>
 				<Route path="/menu">
 					<Menu />
