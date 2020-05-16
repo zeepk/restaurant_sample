@@ -1,14 +1,11 @@
 import React from 'react';
-import './App.css';
-import Article from './components/Article';
+import CustomRouter from './components/Nav/CustomRouter';
+import Header from './components/Nav/Header';
 
 function App() {
 	return (
 		<div className="App">
-			<header className="App-header">
-				<p>A React Django App</p>
-				<Article />
-			</header>
+			<CustomRouter />
 		</div>
 	);
 }
